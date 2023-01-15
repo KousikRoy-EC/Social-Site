@@ -1,0 +1,26 @@
+.NotificationPart{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.navBarIcons{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.navBarIcons>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+.navBarIcons>a>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+

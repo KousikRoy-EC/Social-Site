@@ -1,0 +1,42 @@
+.FollowingCard{
+    width: 100%;
+    border-radius: 0.7rem;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.follower{
+    display: flex;
+    justify-content: space-between;
+}
+
+.follower>div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.followerImg{
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+}
+
+.follower-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.follower-info>span:nth-of-type(1){
+font-weight: bold;
+}
+
+.foll-btn{
+    height: 2rem;
+padding: 0px 20px 0px 20px;
+
+}

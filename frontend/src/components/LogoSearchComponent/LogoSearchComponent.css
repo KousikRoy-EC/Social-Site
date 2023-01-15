@@ -1,0 +1,31 @@
+.LogoSearchComponent{
+    display: flex;
+    gap: 0.75rem;
+}
+
+.searchInput{
+    display: flex;
+    background-color: var(--inputColor);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.searchInput>input{
+border: none;
+background-color: transparent;
+outline: none;
+}
+
+.searchIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    background: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+}
+
+.searchIcon:hover{
+   cursor: pointer;
+}

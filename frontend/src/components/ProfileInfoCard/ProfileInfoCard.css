@@ -1,0 +1,28 @@
+.ProfileInfoCard{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--cardColor);
+    border-radius: 10px;
+    width: 90%;
+}
+
+
+.profileInfoHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logout-btn{
+    width: 7rem;
+    height: 2rem;
+    margin-top: 3rem;
+    align-self: flex-end;
+}
+
+.edit-btn:hover{
+    cursor: pointer;
+}
