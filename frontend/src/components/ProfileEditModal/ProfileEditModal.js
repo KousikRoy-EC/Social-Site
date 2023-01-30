@@ -14,7 +14,6 @@ function ProfileEditModal({ open, onClose, data }) {
   const [coverImg, setcoverImg] = useState(null);
   const dispatch = useDispatch();
   const params = useParams();
-  const { user } = useSelector((state) => state.auth.userData);
 
   const hadleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

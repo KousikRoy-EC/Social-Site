@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getUserApi } from "../../api/userApi";
 import { useEffect } from "react";
 import { logoutThunk } from "../../redux/action/auth";
+import { useNavigate } from "react-router-dom";
 
 const ProfileInfoCard = () => {
   const [modalOpen, setmodalOpen] = useState(false);
@@ -16,10 +17,15 @@ const ProfileInfoCard = () => {
   const profileId = params.id;
   const [profileUser, setProfileUser] = useState({});
   const { user } = useSelector((state) => state.auth.userData);
+  const navigate = useNavigate();
 
+
+
+  
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logoutThunk());
+    navigate('/');
   };
 
   useEffect(() => {

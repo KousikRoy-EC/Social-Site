@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginThunk,logoutThunk,signupThunk } from "../action/auth";
-import { updateUser } from "../action/user";
+import { updateUser ,followUser,unfollowUser} from "../action/user";
+
 const initialState = {
   userData: null,
   isLoading: false,
@@ -43,18 +44,22 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
     [logoutThunk.pending]: (state, action) => {
-      // console.log("logout started");
+      state.isLoading = true;
     },
     [logoutThunk.fulfilled]: (state, action) => {
-      // state.isLoading=false;
-      // state.userData=null;
-      // state.error=null;
-      // console.log("logout Sucess");
+      state.isLoading = false;
+      state.userData = null;
+      state.error = null;
+    },
+    [logoutThunk.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
     [updateUser.pending]: (state, action) => {
       state.isLoading = true;
     },
     [updateUser.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.isLoading = false;
       state.userData = action.payload;
     },
@@ -62,6 +67,28 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    [followUser.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [followUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.userData = {user:action.payload}
+    },
+    [followUser.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    
+    [unfollowUser.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [unfollowUser.fulfilled]: (state, action) => {
+      state.userData = {user:action.payload};
+    },
+    [unfollowUser.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
   }
 });
 

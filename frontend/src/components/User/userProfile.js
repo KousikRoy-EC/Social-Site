@@ -13,13 +13,13 @@ const dispatch = useDispatch();
   );
 
 
-  // const handleFollow = (e) => {
-  //   e.preventDefault();
-  //   following
-  //     ? dispatch(unfollowUser({id:follower._id, user:user}))
-  //     : dispatch(followUser({id:follower._id, user:user}));
-  //   setFollowing((prev) => !prev);
-  // };
+  const handleFollow = (e) => {
+    e.preventDefault();
+    following
+      ? dispatch(unfollowUser({id:follower._id, user:user}))
+      : dispatch(followUser({id:follower._id, user:user}));
+    setFollowing((prev) => !prev);
+  };
 
 
   return (
@@ -36,7 +36,7 @@ const dispatch = useDispatch();
         </div>
       </div>
 
-      <button  className="button foll-btn"> {following ? "Unfollow" : "Follow"}</button>
+      <button onClick={handleFollow}  className="button foll-btn"> {following ? "Unfollow" : "Follow"}</button>
     </div>
   );
 };
