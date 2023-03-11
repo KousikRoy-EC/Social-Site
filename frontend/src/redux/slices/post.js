@@ -29,8 +29,9 @@ const postSlice = createSlice({
       state.isLoading = true;
     },
     [getTimelinePostThunk.fulfilled]: (state, action) => {
+
       state.isLoading = false;
-      state.postData = [...state.postData,...action.payload];
+      state.postData = action.payload;
     },
     [getTimelinePostThunk.rejected]: (state, action) => {
       state.isLoading = false;

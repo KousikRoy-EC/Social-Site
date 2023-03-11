@@ -7,7 +7,6 @@ export const uploadImageThunk = createAsyncThunk(
     async (postImg, thunkAPI) => {
         try {
             const response = await uploadImageApi(postImg);
-            console.log(response.data);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -21,7 +20,6 @@ export const uploadPostThunk = createAsyncThunk(
     async (postData, thunkAPI) => {
         try {
             const response = await createPostApi(postData);
-            console.log(response.data);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);

@@ -4,9 +4,20 @@ import Profile from "./pages/profile/profile";
 import Auth from "./pages/Auth/Auth";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { setUserFromLocalStorage } from "./redux/slices/auth";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.userData);
+
+  
+  useEffect(() => {
+    dispatch(setUserFromLocalStorage());
+  }, [dispatch]);
+
+
   return (
     <div className="App">
       <div className="blur" style={{ top: "-18%", right: "0" }}></div>

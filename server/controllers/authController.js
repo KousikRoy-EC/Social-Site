@@ -13,7 +13,7 @@ export const registerNewUser = async (req, res) => {
     const user = await userModel.findOne({ username });
 
     if (user) {
-      res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({ message: "User already exists" });
     }
 
     const registeredNewUser = await newUser.save();
@@ -22,9 +22,9 @@ export const registerNewUser = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    res.status(200).json({ newUser, token });
+    return res.status(200).json({ newUser, token });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 

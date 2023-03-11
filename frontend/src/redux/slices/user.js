@@ -10,7 +10,9 @@ const initialState = {
 const updateSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+  
+  },
   extraReducers: {
     [updateUser.pending]: (state, action) => {
       state.isLoading = true;

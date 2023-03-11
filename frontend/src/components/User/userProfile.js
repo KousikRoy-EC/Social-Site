@@ -28,7 +28,7 @@ const dispatch = useDispatch();
         <img src={
             publicFolder + follower.profilePicture
               ? publicFolder + follower.profilePicture
-              : publicFolder + "defaultProfile.png"
+              : publicFolder + "defaultProfileImg.png"
           } alt={follower.name} className="followerImg" />
         <div className="follower-info">
           <span>{follower.firstname}</span>

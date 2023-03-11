@@ -6,7 +6,7 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useSelector, useDispatch } from "react-redux";
-import { uploadImageThunk, uploadPostThunk } from "../../redux/action/post";
+import { getTimelinePostThunk, uploadImageThunk, uploadPostThunk } from "../../redux/action/post";
 
 
 const SharePost = () => {
@@ -53,10 +53,12 @@ const serverImg = process.env.REACT_APP_PUBLIC_FOLDER;
   
     dispatch(uploadPostThunk(postForm));
     resetSharePost();
+    dispatch(getTimelinePostThunk(user._id));
+    
   };
   return (
     <div className="SharePost">
-      <img src={user.profilePicture ?serverImg+user.profilePicture:serverImg+"defaultProfileImg.png" } alt="img" />
+      <img src={user.profilePicture.length > 0 ?serverImg+user.profilePicture : serverImg+"defaultProfileImg.png"} alt="img" />
       <div>
         <input
           ref={descRef}

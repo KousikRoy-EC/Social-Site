@@ -1,8 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { loginApi, signupApi } from "../../api/authApi";
-import { getUserApi } from '../../api/userApi';
-// import { logoutStarted,logoutSuccess } from '../slices/auth';
-// import { useDispatch } from 'react-redux';
 
 export const signupThunk = createAsyncThunk(
     'auth/signup',
@@ -44,14 +41,12 @@ export const logoutThunk = createAsyncThunk(
 
 
 
-    // export const updateUser = createAsyncThunk(
-    // 'auth/updateUser',
-    // async ({id}, thunkAPI) => {
-    //     try {
-    //         const response = await getUserApi(id);
-    //         localStorage.setItem("profile", JSON.stringify({...response?.data}));
-    //         return response.data;
-    //     } catch (error) {
-    //         return thunkAPI.rejectWithValue(error.response.data);
-    //     }
-    // });
+    export const loadUser = () => {
+        const profile = JSON.parse(localStorage.getItem('profile'));
+      
+        if (profile) {
+          return { isAuthenticated: true, profile };
+        } else {
+          return { isAuthenticated: false, profile: null };
+        }
+      };

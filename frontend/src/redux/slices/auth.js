@@ -18,7 +18,10 @@ const authSlice = createSlice({
     },
     logoutSuccess: (state, action) => {
       console.log("logout success");
-    }
+    },
+    setUserFromLocalStorage: (state, action) => {
+      state.userData = JSON.parse(localStorage.getItem("profile")) || null;
+    },
   },
   extraReducers: {
     [loginThunk.pending]: (state, action) => {
@@ -71,8 +74,12 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [followUser.fulfilled]: (state, action) => {
+      const data = window.localStorage.getItem('profile')
+      const newData = JSON.parse(data);
+      newData.user.followings=action.payload.followings;
+      localStorage.setItem('profile',JSON.stringify({...newData}))
       state.isLoading = false;
-      state.userData = {user:action.payload}
+      state.userData = {user:newData.user}
     },
     [followUser.rejected]: (state, action) => {
       state.isLoading = false;
@@ -83,7 +90,11 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [unfollowUser.fulfilled]: (state, action) => {
-      state.userData = {user:action.payload};
+      const data = window.localStorage.getItem('profile')
+      const newData = JSON.parse(data);
+      newData.user.followings=action.payload.followings;
+      localStorage.setItem('profile',JSON.stringify({...newData}))
+      state.userData = {user:newData.user};
     },
     [unfollowUser.rejected]: (state, action) => {
       state.isLoading = false;
@@ -92,6 +103,6 @@ const authSlice = createSlice({
   }
 });
 
-export const { logoutStarted,logoutSuccess } = authSlice.actions;
+export const { logoutStarted,logoutSuccess , setUserFromLocalStorage } = authSlice.actions;
 
 export default authSlice.reducer;

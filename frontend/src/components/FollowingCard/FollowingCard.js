@@ -1,22 +1,20 @@
 import React from "react";
 import "./FollowingCard.css";
 import UserProfile from "../User/userProfile";
-import { FollowerData } from "../../Data/FollowerData";
 import { useEffect } from "react";
 import {getAllUserApi} from '../../api/userApi'
-import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 const FollowingCard = () => {
-  const dispatch=useDispatch();
-  const {user} = useSelector((state) => state.auth.userData);
+
+  const {user}=useSelector((state)=>state.auth.userData);
+  const params = useParams();
   const [Person,setPerson] = useState([]);
-  const {allUser} = useSelector((state) => state.user.allUser);
-
-
   useEffect(() => {
     const fetchPersons = async () => {
-      const { data } = await getAllUserApi();
+      const { data } = await getAllUserApi(user._id)
+      console.log(data);
       setPerson(data);
     };
     fetchPersons();

@@ -1,19 +1,31 @@
 import React from "react";
-import Cover from "../../img/cover.jpg";
-import Profile from "../../img/profileImg.jpg";
 import "./ProfileCard.css";
 import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-const ProfileCard = ({render}) => {
 
+const ProfileCard = ({render}) => {
 const serverImg = process.env.REACT_APP_PUBLIC_FOLDER;
-  const {user}=useSelector(state=>state.auth.userData)
+const {user}=useSelector(state=>state.auth.userData)
 const posts=useSelector(state=>state.post.postData)
+
+
   return (
     <div className="ProfileCard">
       <div className="profileImg">
-        <img src={user.coverPicture ?serverImg+user.coverPicture:serverImg+"defaultCoverImg.jpg" } alt="profile" />
-        <img src={user.profilePicture ?serverImg+user.profilePicture:serverImg+"defaultProfileImg.png" }  alt="profile" />
+      <img src={
+            user.coverPicture
+              ? serverImg + user.coverPicture
+              : serverImg + "defaultCoverImg.jpg"
+          } alt="CoverImage" />
+        <img
+          src={
+            user.profilePicture
+              ? serverImg + user.profilePicture
+              : serverImg + "defaultProfileImg.png"
+          }
+          alt="ProfileImage"
+        />
+
       </div>
 
       <div className="ProfileName">
@@ -25,12 +37,12 @@ const posts=useSelector(state=>state.post.postData)
         <hr />
         <div>
           <div className="follow">
-            <span>{user.followings.length}</span>
+            <span>{user.following? user.following.length : 0}</span>
             <span>followings</span>
           </div>
           <div className="verticalLine"></div>
           <div className="follow">
-            <span>{user.followers.length}</span>
+            <span>{user.followers? user.followers.length : 0}</span>
             <span>followers</span>
           </div>
 
